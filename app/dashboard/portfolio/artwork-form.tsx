@@ -19,11 +19,12 @@ type Props = {
     imageUrl?: string | null;
   };
   heading: string;
+  featuredCapReached?: boolean;
 };
 
 const initial: ArtworkFormState = { type: 'idle' };
 
-export function ArtworkForm({ action, defaultValues, heading }: Props) {
+export function ArtworkForm({ action, defaultValues, heading, featuredCapReached = false }: Props) {
   const [state, formAction, isPending] = useActionState(action, initial);
   const [preview, setPreview] = useState<string | null>(defaultValues?.imageUrl ?? null);
 
@@ -124,18 +125,30 @@ export function ArtworkForm({ action, defaultValues, heading }: Props) {
             </p>
           </Field>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-start gap-3">
             <input
               type="checkbox"
               id="featured"
               name="featured"
               defaultChecked={defaultValues?.featured}
-              className="w-4 h-4 accent-sage"
+              disabled={featuredCapReached}
+              className="w-4 h-4 mt-0.5 accent-sage disabled:opacity-40 disabled:cursor-not-allowed"
             />
-            <label htmlFor="featured" className="font-sans text-sm text-obsidian cursor-pointer">
-              Feature on home page{' '}
-              <span className="text-obsidian/40">(max 3 artworks)</span>
-            </label>
+            <div>
+              <label
+                htmlFor="featured"
+                className={`font-sans text-sm ${featuredCapReached ? 'text-obsidian/40 cursor-not-allowed' : 'text-obsidian cursor-pointer'}`}
+              >
+                Feature on home page
+              </label>
+              {featuredCapReached ? (
+                <p className="font-sans text-xs text-obsidian/40 mt-0.5">
+                  3 artworks are already featured. Unfeature one to enable this.
+                </p>
+              ) : (
+                <p className="font-sans text-xs text-obsidian/40 mt-0.5">Shown on the home page — max 3.</p>
+              )}
+            </div>
           </div>
         </div>
 

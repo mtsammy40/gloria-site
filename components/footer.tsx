@@ -79,10 +79,16 @@ export function Footer({ instagramHandle, pinterestHandle }: FooterProps) {
           </div>
         </div>
 
-        <div className="border-t border-ivory/10 pt-8">
+        <div className="border-t border-ivory/10 pt-8 flex items-center justify-between gap-4">
           <p className="text-xs font-sans text-ivory/30">
             &copy; {year} Gloriah Mutheu Mwangangi. All rights reserved.
           </p>
+          <Link
+            href="/login"
+            className="text-xs font-sans text-ivory/20 hover:text-ivory/50 transition-colors"
+          >
+            Admin
+          </Link>
         </div>
       </div>
     </footer>
