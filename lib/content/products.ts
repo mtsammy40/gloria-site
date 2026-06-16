@@ -36,6 +36,19 @@ export async function getProductById(db: DB, id: string): Promise<ProductWithArt
   return row ?? null;
 }
 
+export async function listProductsByArtworkSlug(
+  db: DB,
+  slug: string,
+): Promise<ProductWithArtwork[]> {
+  const rows = await db
+    .select({ product: products, artwork: artworks })
+    .from(products)
+    .innerJoin(artworks, eq(products.artworkId, artworks.id))
+    .where(eq(artworks.slug, slug))
+    .orderBy(asc(products.createdAt));
+  return rows.map(({ product, artwork }) => ({ ...product, artwork }));
+}
+
 export async function createProduct(db: DB, input: CreateProductInput): Promise<ProductRow> {
   const [row] = await db.insert(products).values(input).returning();
   return row;
