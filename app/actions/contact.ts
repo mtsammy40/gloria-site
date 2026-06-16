@@ -2,6 +2,8 @@
 
 import { db } from '@/lib/db';
 import { contactSubmissions } from '@/lib/db/schema';
+import { getSiteSettings } from '@/lib/content/settings';
+import { sendNewInquiryNotification } from '@/lib/email/resend';
 
 const SUBJECTS = ['originals', 'prints', 'interior', 'commission', 'general'] as const;
 type Subject = (typeof SUBJECTS)[number];
@@ -34,8 +36,23 @@ export async function submitContactForm(
       subject: subject as Subject,
       message,
     });
-    return { type: 'success' };
   } catch {
     return { type: 'error', message: 'Something went wrong. Please try again.' };
   }
+
+  // Notify admin — fire-and-forget
+  getSiteSettings(db)
+    .then((s) => {
+      const adminEmail = s.contactEmail || 'hello@gloriahmutheu.com';
+      return sendNewInquiryNotification({
+        adminEmail,
+        senderName: name,
+        senderEmail: email,
+        subject,
+        message,
+      });
+    })
+    .catch(() => {});
+
+  return { type: 'success' };
 }

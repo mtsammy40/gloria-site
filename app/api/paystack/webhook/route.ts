@@ -4,6 +4,7 @@ import { orders, orderItems, payments, products } from '@/lib/db/schema';
 import { eq, inArray } from 'drizzle-orm';
 import { verifyWebhookSignature, parseWebhookEvent } from '@/lib/paystack/paystack';
 import { decrementInventory } from '@/lib/orders/engine';
+import { sendOrderConfirmation } from '@/lib/email/resend';
 
 export async function POST(req: NextRequest) {
   const payload = await req.text();
@@ -94,6 +95,21 @@ async function handleChargeSuccess(
     .update(orders)
     .set({ status: 'paid', needsReview, updatedAt: new Date() })
     .where(eq(orders.id, order.id));
+
+  // Send order confirmation — fire-and-forget, non-blocking
+  sendOrderConfirmation({
+    orderId: order.id,
+    customerName: order.customerName,
+    customerEmail: order.customerEmail,
+    items: items.map((i) => ({
+      titleSnapshot: i.titleSnapshot,
+      quantity: i.quantity,
+      priceKesSnapshot: i.priceKesSnapshot,
+    })),
+    subtotalKes: order.subtotalKes,
+    shippingFeeKes: order.shippingFeeKes,
+    totalKes: order.totalKes,
+  }).catch(() => {});
 }
 
 async function handleChargeFailed(
