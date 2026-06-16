@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { db } from '@/lib/db';
 import { getProductById, isProductAvailable } from '@/lib/content/products';
 import { getSiteSettings } from '@/lib/content/settings';
+import { AddToCartButton } from '@/components/add-to-cart-button';
 import type { Metadata } from 'next';
 
 type Props = { params: Promise<{ id: string }> };
@@ -119,14 +120,18 @@ export default async function ProductDetailPage({ params }: Props) {
 
             {/* CTA */}
             {available ? (
-              /* Placeholder — wired up fully in Cart module (#8) */
-              <button
-                type="button"
-                data-product-id={product.id}
-                className="add-to-cart w-full sm:w-auto bg-obsidian text-ivory font-sans text-xs uppercase tracking-widest px-10 py-4 hover:bg-mauve transition-colors"
-              >
-                Add to Cart
-              </button>
+              <AddToCartButton
+                item={{
+                  productId: product.id,
+                  title: artwork.title,
+                  imageUrl: artwork.imageUrl ?? null,
+                  medium: artwork.medium,
+                  dimensions: artwork.dimensions ?? null,
+                  priceKes: product.priceKes,
+                  type: product.type,
+                  stockRemaining: product.stockRemaining,
+                }}
+              />
             ) : (
               <p className="font-sans text-sm text-obsidian/40 uppercase tracking-widest">
                 This work has found a home.

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { ProductWithArtwork } from '@/lib/content/products';
 import { isProductAvailable } from '@/lib/content/products';
+import { useCart } from '@/lib/cart/cart-context';
 
 type Props = {
   originals: ProductWithArtwork[];
@@ -29,6 +30,11 @@ function ProductCard({
   const available = isProductAvailable(product);
   const artwork = product.artwork;
   const aspectClass = cols === 2 ? 'aspect-[3/4]' : 'aspect-square';
+  const { addToCart, cart } = useCart();
+  const inCart = cart.find((c) => c.productId === product.id);
+  const atMax = product.type === 'original'
+    ? (inCart?.quantity ?? 0) >= 1
+    : (inCart?.quantity ?? 0) >= product.stockRemaining;
 
   return (
     <article className="group">
@@ -89,14 +95,36 @@ function ProductCard({
         </div>
       </Link>
 
-      {available && (
-        <Link
-          href={`/shop/${product.id}`}
-          className="mt-3 inline-block font-sans text-xs uppercase tracking-widest text-obsidian/50 hover:text-obsidian border-b border-obsidian/20 hover:border-obsidian pb-px transition-colors"
-        >
-          View details →
-        </Link>
-      )}
+      <div className="mt-3 flex items-center gap-4">
+        {available && !atMax && (
+          <button
+            type="button"
+            onClick={() =>
+              addToCart({
+                productId: product.id,
+                title: artwork.title,
+                imageUrl: artwork.imageUrl ?? null,
+                medium: artwork.medium,
+                dimensions: artwork.dimensions ?? null,
+                priceKes: product.priceKes,
+                type: product.type,
+                stockRemaining: product.stockRemaining,
+              })
+            }
+            className="font-sans text-xs uppercase tracking-widest text-obsidian border-b border-obsidian/30 hover:border-obsidian pb-px transition-colors"
+          >
+            Add to Cart
+          </button>
+        )}
+        {inCart && (
+          <Link
+            href="/cart"
+            className="font-sans text-xs uppercase tracking-widest text-sage border-b border-sage/30 hover:border-sage pb-px transition-colors"
+          >
+            In Cart ({inCart.quantity})
+          </Link>
+        )}
+      </div>
     </article>
   );
 }

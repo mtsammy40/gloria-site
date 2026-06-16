@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { CartCount } from './cart-count';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
@@ -31,6 +32,9 @@ export function Nav() {
               </Link>
             </li>
           ))}
+          <li>
+            <CartCount />
+          </li>
         </ul>
 
         {/* Mobile menu placeholder — implemented in a later slice */}

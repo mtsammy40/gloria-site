@@ -1,6 +1,7 @@
 import { Nav } from '@/components/nav';
 import { Footer } from '@/components/footer';
 import { MailingListBand } from '@/components/mailing-list-band';
+import { CartProvider } from '@/lib/cart/cart-context';
 import { db } from '@/lib/db';
 import { getSiteSettings } from '@/lib/content/settings';
 
@@ -21,11 +22,11 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
   }
 
   return (
-    <>
+    <CartProvider>
       <Nav />
       <main className="pt-16 lg:pt-20">{children}</main>
       <MailingListBand heading={mailingHeading} subheading={mailingSubheading} />
       <Footer instagramHandle={instagramHandle} pinterestHandle={pinterestHandle} />
-    </>
+    </CartProvider>
   );
 }
