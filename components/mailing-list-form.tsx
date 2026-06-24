@@ -17,17 +17,21 @@ export function MailingListForm({ heading, subheading }: Props) {
 
   return (
     <div className="max-w-2xl">
-      <p className="font-sans text-xs uppercase tracking-widest text-mauve/60 mb-5">Stay close</p>
-      <h2 className="font-display font-semibold text-3xl lg:text-4xl text-ivory mb-4">{heading}</h2>
-      {subheading && (
-        <p className="font-sans text-sm text-ivory/50 mb-10 leading-relaxed">{subheading}</p>
-      )}
+      <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-ivory/40 mb-6">
+        Stay Close
+      </p>
+      <h2
+        className="font-display font-semibold text-ivory mb-10 leading-tight"
+        style={{ fontSize: 'clamp(36px, 5vw, 68px)' }}
+      >
+        {heading}
+      </h2>
 
       {isDone ? (
-        <p className="font-sans text-sm text-sage leading-relaxed">{state.message}</p>
+        <p className="font-sans text-sm text-ivory/70 leading-relaxed">{state.message}</p>
       ) : (
-        <form action={action} className="flex flex-col sm:flex-row gap-3">
-          <div className="flex-1 max-w-xs">
+        <form action={action} className="flex flex-col sm:flex-row gap-0">
+          <div className="flex-1 max-w-sm">
             <label htmlFor="mailing-email" className="sr-only">
               Email address
             </label>
@@ -35,23 +39,27 @@ export function MailingListForm({ heading, subheading }: Props) {
               id="mailing-email"
               type="email"
               name="email"
-              placeholder="your@email.com"
+              placeholder="Your email"
               required
-              className="w-full bg-ivory/10 border border-ivory/20 text-ivory placeholder:text-ivory/30 px-4 py-3 text-sm font-sans focus:outline-none focus:border-mauve/60 transition-colors"
+              className="w-full bg-transparent border border-ivory/25 text-ivory placeholder:text-ivory/35 px-5 py-4 text-sm font-sans focus:outline-none focus:border-ivory/50 transition-colors"
             />
           </div>
           <button
             type="submit"
             disabled={pending}
-            className="bg-ivory text-obsidian px-6 py-3 text-xs uppercase tracking-widest font-sans hover:bg-mauve hover:text-ivory transition-colors disabled:opacity-50"
+            className="bg-ivory text-obsidian px-8 py-4 text-[10px] uppercase tracking-[0.18em] font-sans hover:bg-sage hover:text-ivory transition-colors disabled:opacity-50 shrink-0"
           >
             {pending ? 'Joining…' : 'Join'}
           </button>
         </form>
       )}
 
+      {subheading && !isDone && (
+        <p className="mt-4 font-sans text-xs text-ivory/35 leading-relaxed">{subheading}</p>
+      )}
+
       {state.type === 'error' && (
-        <p className="mt-3 text-xs font-sans text-mauve" role="alert">
+        <p className="mt-3 text-xs font-sans text-ivory/60" role="alert">
           {state.message}
         </p>
       )}

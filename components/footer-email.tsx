@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-export function FooterEmail() {
+export function FooterEmail({ className }: { className?: string }) {
   const [email, setEmail] = useState<string | null>(null);
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export function FooterEmail() {
   return (
     <a
       href={`mailto:${email}`}
-      className="text-mauve/80 hover:text-mauve transition-colors text-sm font-sans"
+      className={className ?? 'text-mauve/80 hover:text-mauve transition-colors text-sm font-sans'}
     >
       {email}
     </a>

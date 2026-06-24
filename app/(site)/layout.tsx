@@ -6,7 +6,7 @@ import { db } from '@/lib/db';
 import { getSiteSettings } from '@/lib/content/settings';
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  let mailingHeading = 'Stay Close';
+  let mailingHeading = 'Beauty finds you when you stay close.';
   let mailingSubheading = 'New work, studio updates, and first access to the shop.';
   let instagramHandle: string | undefined;
   let pinterestHandle: string | undefined;

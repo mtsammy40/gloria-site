@@ -1,14 +1,6 @@
 import Link from 'next/link';
 import { FooterEmail } from './footer-email';
 
-const NAV_LINKS = [
-  { href: '/portfolio', label: 'Portfolio' },
-  { href: '/shop', label: 'Shop' },
-  { href: '/interior-art', label: 'Interior Art' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
-];
-
 type FooterProps = {
   instagramHandle?: string;
   pinterestHandle?: string;
@@ -17,75 +9,67 @@ type FooterProps = {
 export function Footer({ instagramHandle, pinterestHandle }: FooterProps) {
   const year = new Date().getFullYear();
 
+  const linkClass =
+    'font-sans text-[10px] uppercase tracking-[0.18em] text-ivory/50 hover:text-ivory transition-colors';
+
   return (
     <footer className="bg-obsidian text-ivory">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-16">
-          {/* Brand */}
-          <div>
-            <Link
-              href="/"
-              className="font-display font-semibold text-xl text-ivory hover:text-mauve transition-colors"
-            >
-              Gloriah Mutheu Mwangangi
-            </Link>
-            <p className="mt-4 text-sm font-sans text-ivory/50 leading-relaxed max-w-xs">
-              Nairobi-based visual artist — original paintings, limited prints, and bespoke interior
-              art.
-            </p>
-          </div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-10 lg:py-14">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+          {/* Brand mark */}
+          <Link
+            href="/"
+            className="font-display font-semibold text-[40px] lg:text-[52px] text-ivory leading-none tracking-tight hover:text-ivory/80 transition-colors"
+          >
+            Gloriah<span className="text-sage">.</span>
+          </Link>
 
-          {/* Navigation */}
-          <div>
-            <p className="text-xs uppercase tracking-widest font-sans text-mauve/50 mb-4">
-              Navigate
-            </p>
-            <ul className="space-y-3">
-              {NAV_LINKS.map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm font-sans text-ivory/60 hover:text-ivory transition-colors"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <p className="text-xs uppercase tracking-widest font-sans text-mauve/50 mb-4">
-              Connect
-            </p>
-            <div className="space-y-3">
-              <div>
-                <FooterEmail />
-              </div>
-              {instagramHandle && (
-                <p className="text-sm font-sans text-ivory/60">
-                  Instagram:{' '}
-                  <span className="text-ivory/80">{instagramHandle}</span>
-                </p>
-              )}
-              {pinterestHandle && (
-                <p className="text-sm font-sans text-ivory/60">
-                  Pinterest:{' '}
-                  <span className="text-ivory/80">{pinterestHandle}</span>
-                </p>
-              )}
-            </div>
-          </div>
+          {/* Social + contact links */}
+          <nav
+            aria-label="Social links"
+            className="flex flex-wrap items-center gap-5 lg:gap-8"
+          >
+            {instagramHandle && (
+              <a
+                href={`https://www.instagram.com/${instagramHandle}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                {instagramHandle}
+              </a>
+            )}
+            {instagramHandle && (
+              <a
+                href={`https://www.instagram.com/${instagramHandle}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                Instagram
+              </a>
+            )}
+            {pinterestHandle && (
+              <a
+                href={`https://www.pinterest.com/${pinterestHandle}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClass}
+              >
+                Pinterest
+              </a>
+            )}
+            <FooterEmail className={linkClass} />
+          </nav>
         </div>
 
-        <div className="border-t border-mauve/20 pt-8 flex items-center justify-between gap-4">
-          <p className="text-xs font-sans text-ivory/30">
-            &copy; {year} Gloriah Mutheu Mwangangi. All rights reserved.
+        <div className="mt-8 pt-6 border-t border-ivory/[0.07] flex items-center justify-between">
+          <p className="font-sans text-[10px] text-ivory/20">
+            &copy; {year} Gloriah Mutheu Mwangangi
           </p>
           <Link
             href="/login"
-            className="text-xs font-sans text-ivory/20 hover:text-ivory/50 transition-colors"
+            className="font-sans text-[10px] text-ivory/15 hover:text-ivory/40 transition-colors"
           >
             Admin
           </Link>

@@ -34,52 +34,89 @@ export default async function HomePage() {
     // DB not seeded yet — render with defaults
   }
 
+  // Split the tagline so the last word gets the italic mauve accent
+  const taglineWords = tagline.split(' ');
+  const taglineAccent = taglineWords.pop() ?? '';
+  const taglineBody = taglineWords.join(' ');
+
   return (
     <>
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="relative h-[100svh] min-h-[600px] bg-obsidian overflow-hidden">
-        {heroVideoUrl ? (
-          <video
-            src={heroVideoUrl}
-            poster={heroPosterUrl ?? undefined}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-80"
-          />
-        ) : (
-          /* Placeholder when no hero video is configured */
-          <div className="absolute inset-0 bg-gradient-to-br from-obsidian via-obsidian/90 to-mauve/20" />
-        )}
+      <section className="h-[100svh] min-h-[600px] overflow-hidden flex">
+        {/* Left text panel */}
+        <div className="relative flex flex-col justify-between bg-obsidian w-full lg:w-[54%] shrink-0 px-6 lg:px-10 pt-10 pb-14 lg:pt-16 lg:pb-20 overflow-hidden">
+          {/* Subtle sage atmosphere on mobile (right panel hidden) */}
+          <div className="absolute inset-0 bg-gradient-to-br from-obsidian via-obsidian to-sage-deep/10 pointer-events-none lg:hidden" />
 
-        {/* Gradient veil at bottom for text legibility */}
-        <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-obsidian via-obsidian/60 to-transparent" />
+          {/* Eyebrow */}
+          <p className="relative font-sans text-[10px] uppercase tracking-[0.22em] text-ivory/30">
+            <span className="text-sage/70 mr-2">01</span>— Home
+          </p>
 
-        {/* Tagline + statement */}
-        <div className="absolute inset-x-0 bottom-0 px-6 lg:px-10 pb-14 lg:pb-20 max-w-7xl mx-auto">
-          <h1
-            className="font-display font-semibold text-ivory leading-none mb-6"
-            style={{ fontSize: 'clamp(48px, 7vw, 88px)' }}
-          >
-            {tagline}
-          </h1>
-          <div className="flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-16">
-            <p className="font-sans italic text-ivory/70 text-base lg:text-lg leading-relaxed max-w-md">
-              {artistStatement}
-            </p>
-            <Link
-              href="/about"
-              className="shrink-0 font-sans text-xs uppercase tracking-widest text-ivory/60 hover:text-mauve border-b border-ivory/30 hover:border-mauve pb-px transition-colors"
+          {/* Headline + statement */}
+          <div className="relative">
+            <h1
+              className="font-display font-bold text-ivory leading-none mb-8"
+              style={{ fontSize: 'clamp(54px, 8.5vw, 112px)' }}
             >
-              About Gloriah →
-            </Link>
+              {taglineBody}{' '}
+              <em className="text-mauve">{taglineAccent}</em>
+            </h1>
+
+            <div className="border-t border-ivory/[0.08] pt-6 flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-10">
+              <p className="font-sans text-ivory/55 text-sm leading-relaxed max-w-[340px]">
+                {artistStatement}
+              </p>
+              <Link
+                href="#selected-works"
+                className="shrink-0 flex items-center gap-3 font-sans text-[9px] uppercase tracking-[0.22em] text-ivory/35 hover:text-sage transition-colors"
+              >
+                <span className="w-8 h-px bg-current inline-block shrink-0" />
+                Scroll to enter the studio
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* Right visual panel — sage, hidden on mobile */}
+        <div className="hidden lg:block lg:flex-1 relative bg-sage-deep overflow-hidden">
+          {heroVideoUrl ? (
+            <video
+              src={heroVideoUrl}
+              poster={heroPosterUrl ?? undefined}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-sage/15 via-sage-deep to-obsidian/50" />
+          )}
+
+          {/* Studio film label */}
+          <div className="absolute bottom-8 right-8 z-10 flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full border border-ivory/20 flex items-center justify-center">
+              <svg
+                width="9"
+                height="11"
+                viewBox="0 0 9 11"
+                fill="none"
+                aria-hidden="true"
+                className="text-ivory/50 ml-0.5"
+              >
+                <path d="M0 0L9 5.5L0 11V0Z" fill="currentColor" />
+              </svg>
+            </div>
+            <span className="font-sans text-[9px] uppercase tracking-[0.22em] text-ivory/35">
+              Studio Film · Loop
+            </span>
           </div>
         </div>
       </section>
 
       {/* ── Selected Works ───────────────────────────────────────────────── */}
-      <section className="bg-ivory px-6 lg:px-10 py-20 lg:py-28">
+      <section id="selected-works" className="bg-ivory px-6 lg:px-10 py-20 lg:py-28">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-baseline justify-between mb-10 lg:mb-14">
             <h2 className="font-display font-semibold text-3xl lg:text-4xl text-obsidian">
