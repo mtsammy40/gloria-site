@@ -86,10 +86,10 @@ export default async function ProductDetailPage({ params }: Props) {
 
           {/* Details */}
           <div className="flex flex-col justify-center">
-            <p className="font-sans text-xs uppercase tracking-widest text-obsidian/40 mb-4">
+            <p className="font-sans text-xs uppercase tracking-widest text-mauve/60 mb-4">
               {isPrint ? 'Limited Print' : 'Original Work'}
             </p>
-            <h1 className="font-display italic text-3xl lg:text-4xl text-obsidian mb-3">
+            <h1 className="font-display font-semibold text-3xl lg:text-4xl text-obsidian mb-3">
               {artwork.title}
             </h1>
 
@@ -104,7 +104,7 @@ export default async function ProductDetailPage({ params }: Props) {
             )}
 
             {/* Price */}
-            <div className="mb-8 pb-8 border-b border-obsidian/10">
+            <div className="mb-8 pb-8 border-b border-mauve/20">
               <div className="flex items-baseline gap-4">
                 <span className="font-sans text-2xl text-obsidian">
                   KES {product.priceKes.toLocaleString()}
@@ -139,8 +139,8 @@ export default async function ProductDetailPage({ params }: Props) {
             )}
 
             {/* Shipping note */}
-            <div className="mt-8 pt-8 border-t border-obsidian/10">
-              <p className="font-sans text-xs uppercase tracking-widest text-obsidian/40 mb-3">
+            <div className="mt-8 pt-8 border-t border-mauve/20">
+              <p className="font-sans text-xs uppercase tracking-widest text-mauve/60 mb-3">
                 Shipping
               </p>
               {isPrint ? (

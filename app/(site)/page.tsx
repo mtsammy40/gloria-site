@@ -59,7 +59,7 @@ export default async function HomePage() {
         {/* Tagline + statement */}
         <div className="absolute inset-x-0 bottom-0 px-6 lg:px-10 pb-14 lg:pb-20 max-w-7xl mx-auto">
           <h1
-            className="font-display italic text-ivory leading-none mb-6"
+            className="font-display font-semibold text-ivory leading-none mb-6"
             style={{ fontSize: 'clamp(48px, 7vw, 88px)' }}
           >
             {tagline}
@@ -70,7 +70,7 @@ export default async function HomePage() {
             </p>
             <Link
               href="/about"
-              className="shrink-0 font-sans text-xs uppercase tracking-widest text-ivory/60 hover:text-ivory border-b border-ivory/30 hover:border-ivory pb-px transition-colors"
+              className="shrink-0 font-sans text-xs uppercase tracking-widest text-ivory/60 hover:text-mauve border-b border-ivory/30 hover:border-mauve pb-px transition-colors"
             >
               About Gloriah →
             </Link>
@@ -82,12 +82,12 @@ export default async function HomePage() {
       <section className="bg-ivory px-6 lg:px-10 py-20 lg:py-28">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-baseline justify-between mb-10 lg:mb-14">
-            <h2 className="font-display italic text-3xl lg:text-4xl text-obsidian">
+            <h2 className="font-display font-semibold text-3xl lg:text-4xl text-obsidian">
               Selected Works
             </h2>
             <Link
               href="/portfolio"
-              className="font-sans text-xs uppercase tracking-widest text-obsidian/50 hover:text-obsidian border-b border-obsidian/20 hover:border-obsidian pb-px transition-colors"
+              className="font-sans text-xs uppercase tracking-widest text-obsidian/50 hover:text-mauve border-b border-obsidian/20 hover:border-mauve pb-px transition-colors"
             >
               View Portfolio →
             </Link>

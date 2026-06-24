@@ -20,7 +20,7 @@ export function PortfolioGrid({ artworks, mediums }: Props) {
   return (
     <>
       {/* Filter tabs */}
-      <div className="flex flex-wrap gap-1 mb-12 lg:mb-16 border-b border-obsidian/10 pb-6">
+      <div className="flex flex-wrap gap-1 mb-12 lg:mb-16 border-b border-mauve/20 pb-6">
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -28,7 +28,7 @@ export function PortfolioGrid({ artworks, mediums }: Props) {
             className={[
               'px-4 py-2 text-xs uppercase tracking-widest font-sans transition-colors',
               activeFilter === tab
-                ? 'text-obsidian border-b-2 border-obsidian -mb-[25px] pb-[23px]'
+                ? 'text-mauve border-b-2 border-mauve -mb-[25px] pb-[23px]'
                 : 'text-obsidian/40 hover:text-obsidian/70',
             ].join(' ')}
           >

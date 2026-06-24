@@ -25,7 +25,7 @@ export function Footer({ instagramHandle, pinterestHandle }: FooterProps) {
           <div>
             <Link
               href="/"
-              className="font-display italic text-xl text-ivory hover:text-mauve transition-colors"
+              className="font-display font-semibold text-xl text-ivory hover:text-mauve transition-colors"
             >
               Gloriah Mutheu Mwangangi
             </Link>
@@ -79,7 +79,7 @@ export function Footer({ instagramHandle, pinterestHandle }: FooterProps) {
           </div>
         </div>
 
-        <div className="border-t border-ivory/10 pt-8 flex items-center justify-between gap-4">
+        <div className="border-t border-mauve/20 pt-8 flex items-center justify-between gap-4">
           <p className="text-xs font-sans text-ivory/30">
             &copy; {year} Gloriah Mutheu Mwangangi. All rights reserved.
           </p>

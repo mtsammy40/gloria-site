@@ -16,7 +16,7 @@ export function Nav() {
       <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-16 lg:h-20 flex items-center justify-between">
         <Link
           href="/"
-          className="font-display italic text-lg lg:text-xl text-obsidian tracking-wide hover:text-mauve transition-colors"
+          className="font-display font-semibold text-lg lg:text-xl text-obsidian tracking-wide hover:text-mauve transition-colors"
         >
           Gloriah Mutheu Mwangangi
         </Link>
