@@ -34,7 +34,7 @@ export function ContactForm() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <h3 className="font-display italic text-2xl text-obsidian mb-3">Message received</h3>
+        <h3 className="font-display font-semibold text-2xl text-obsidian mb-3">Message received</h3>
         <p className="font-sans text-sm text-obsidian/60 mb-8 leading-relaxed max-w-xs mx-auto">
           Thank you for reaching out. Gloriah will be in touch soon.
         </p>

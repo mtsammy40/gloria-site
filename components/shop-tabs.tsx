@@ -119,7 +119,7 @@ function ProductCard({
         {inCart && (
           <Link
             href="/cart"
-            className="font-sans text-xs uppercase tracking-widest text-sage border-b border-sage/30 hover:border-sage pb-px transition-colors"
+            className="font-sans text-xs uppercase tracking-widest text-mauve/70 border-b border-mauve/30 hover:border-mauve pb-px transition-colors"
           >
             In Cart ({inCart.quantity})
           </Link>
@@ -140,7 +140,7 @@ export function ShopTabs({ originals, prints, usdRate }: Props) {
   return (
     <>
       {/* Tab bar */}
-      <div className="flex gap-1 mb-12 lg:mb-16 border-b border-obsidian/10 pb-6">
+      <div className="flex gap-1 mb-12 lg:mb-16 border-b border-mauve/20 pb-6">
         {tabs.map(({ key, label, count }) => (
           <button
             key={key}
@@ -148,7 +148,7 @@ export function ShopTabs({ originals, prints, usdRate }: Props) {
             className={[
               'px-4 py-2 text-xs uppercase tracking-widest font-sans transition-colors',
               tab === key
-                ? 'text-obsidian border-b-2 border-obsidian -mb-[25px] pb-[23px]'
+                ? 'text-mauve border-b-2 border-mauve -mb-[25px] pb-[23px]'
                 : 'text-obsidian/40 hover:text-obsidian/70',
             ].join(' ')}
           >

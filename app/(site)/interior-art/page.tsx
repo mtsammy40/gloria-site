@@ -49,10 +49,10 @@ export default function InteriorArtPage() {
 
         {/* Text */}
         <div className="bg-ivory flex flex-col justify-center px-8 lg:px-16 py-16 lg:py-24">
-          <p className="font-sans text-xs uppercase tracking-widest text-obsidian/40 mb-4">
+          <p className="font-sans text-xs uppercase tracking-widest text-mauve/60 mb-4">
             oriahinteriorart
           </p>
-          <h1 className="font-display italic text-3xl lg:text-4xl text-obsidian mb-6 leading-snug">
+          <h1 className="font-display font-semibold text-3xl lg:text-4xl text-obsidian mb-6 leading-snug">
             Art that belongs in your space
           </h1>
           <p className="font-sans text-base text-obsidian/70 leading-relaxed max-w-md mb-8">
@@ -61,7 +61,7 @@ export default function InteriorArtPage() {
           </p>
           <Link
             href="/contact"
-            className="self-start font-sans text-xs uppercase tracking-widest border border-obsidian text-obsidian px-8 py-4 hover:bg-obsidian hover:text-ivory transition-colors"
+            className="self-start font-sans text-xs uppercase tracking-widest border border-obsidian text-obsidian px-8 py-4 hover:border-mauve hover:text-mauve transition-colors"
           >
             Begin a Conversation
           </Link>
@@ -71,14 +71,14 @@ export default function InteriorArtPage() {
       {/* ── How it works ─────────────────────────────────────────────── */}
       <section className="bg-obsidian px-6 lg:px-10 py-20 lg:py-28">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-display italic text-3xl lg:text-4xl text-ivory mb-14 lg:mb-20">
+          <h2 className="font-display font-semibold text-3xl lg:text-4xl text-ivory mb-14 lg:mb-20">
             How it works
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             {HOW_IT_WORKS.map(({ step, heading, body }) => (
               <div key={step}>
-                <p className="font-sans text-xs text-ivory/30 tracking-widest mb-4">{step}</p>
-                <h3 className="font-display italic text-xl text-ivory mb-4">{heading}</h3>
+                <p className="font-sans text-xs text-mauve/50 tracking-widest mb-4">{step}</p>
+                <h3 className="font-display font-semibold text-xl text-ivory mb-4">{heading}</h3>
                 <p className="font-sans text-sm text-ivory/60 leading-relaxed">{body}</p>
               </div>
             ))}
@@ -89,7 +89,7 @@ export default function InteriorArtPage() {
       {/* ── Work in space gallery ─────────────────────────────────────── */}
       <section className="bg-ivory px-6 lg:px-10 py-20 lg:py-28">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-display italic text-3xl text-obsidian mb-10 lg:mb-14">
+          <h2 className="font-display font-semibold text-3xl text-obsidian mb-10 lg:mb-14">
             Work in space
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
@@ -110,7 +110,7 @@ export default function InteriorArtPage() {
 
       {/* ── CTA band ─────────────────────────────────────────────────── */}
       <section className="bg-obsidian px-6 py-20 lg:py-24 text-center">
-        <h2 className="font-display italic text-3xl lg:text-4xl text-ivory mb-4">
+        <h2 className="font-display font-semibold text-3xl lg:text-4xl text-ivory mb-4">
           Ready to begin?
         </h2>
         <p className="font-sans text-sm text-ivory/50 mb-10 max-w-sm mx-auto leading-relaxed">

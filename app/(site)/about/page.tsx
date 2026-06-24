@@ -71,10 +71,10 @@ export default async function AboutPage() {
 
         {/* Bio */}
         <div className="bg-ivory flex flex-col justify-center px-8 lg:px-16 py-16 lg:py-24">
-          <p className="font-sans text-xs uppercase tracking-widest text-obsidian/40 mb-6">
+          <p className="font-sans text-xs uppercase tracking-widest text-mauve/60 mb-6">
             About
           </p>
-          <h1 className="font-display italic text-3xl lg:text-4xl text-obsidian mb-8 leading-snug">
+          <h1 className="font-display font-semibold text-3xl lg:text-4xl text-obsidian mb-8 leading-snug">
             Gloriah Mutheu Mwangangi
           </h1>
           <p className="font-sans text-base text-obsidian/70 leading-relaxed max-w-md">{bio}</p>
@@ -101,13 +101,13 @@ export default async function AboutPage() {
       {/* ── Studio Practice ──────────────────────────────────────────── */}
       <section className="bg-ivory px-6 lg:px-10 py-20 lg:py-28">
         <div className="max-w-7xl mx-auto">
-          <h2 className="font-display italic text-3xl lg:text-4xl text-obsidian mb-12 lg:mb-16">
+          <h2 className="font-display font-semibold text-3xl lg:text-4xl text-obsidian mb-12 lg:mb-16">
             Studio Practice
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-obsidian/10">
             {STUDIO_PRACTICE.map(({ heading, body }) => (
               <div key={heading} className="bg-ivory p-8 lg:p-10">
-                <h3 className="font-sans text-xs uppercase tracking-widest text-obsidian/40 mb-4">
+                <h3 className="font-sans text-xs uppercase tracking-widest text-mauve/60 mb-4">
                   {heading}
                 </h3>
                 <p className="font-sans text-base text-obsidian/70 leading-relaxed">{body}</p>
