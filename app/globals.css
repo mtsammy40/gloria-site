@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  /* Monument palette */
+  /* Monument palette — extended */
   --color-obsidian: #0A0A0A;
   --color-ivory: #FAFAFA;
   --color-sage: #8FAF8F;
+  --color-sage-deep: #3D5745;
   --color-mauve: #B08BA0;
 
   /* Semantic surface aliases */
