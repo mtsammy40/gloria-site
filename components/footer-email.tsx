@@ -16,7 +16,7 @@ export function FooterEmail() {
   return (
     <a
       href={`mailto:${email}`}
-      className="text-ivory/60 hover:text-ivory transition-colors text-sm font-sans"
+      className="text-mauve/80 hover:text-mauve transition-colors text-sm font-sans"
     >
       {email}
     </a>
