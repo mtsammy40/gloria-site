@@ -37,7 +37,7 @@ export function Footer({ instagramHandle, pinterestHandle }: FooterProps) {
 
           {/* Navigation */}
           <div>
-            <p className="text-xs uppercase tracking-widest font-sans text-ivory/40 mb-4">
+            <p className="text-xs uppercase tracking-widest font-sans text-mauve/50 mb-4">
               Navigate
             </p>
             <ul className="space-y-3">
@@ -56,7 +56,7 @@ export function Footer({ instagramHandle, pinterestHandle }: FooterProps) {
 
           {/* Contact */}
           <div>
-            <p className="text-xs uppercase tracking-widest font-sans text-ivory/40 mb-4">
+            <p className="text-xs uppercase tracking-widest font-sans text-mauve/50 mb-4">
               Connect
             </p>
             <div className="space-y-3">
